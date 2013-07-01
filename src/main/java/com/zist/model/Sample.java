@@ -29,7 +29,7 @@ public class Sample implements java.io.Serializable {
     private String view;
     private String designFile;
     private String gender;
-    private Set<Machiene> machieneTimings;
+    private Set<Machine> machineTimings;
 
     public Sample() {
     }
@@ -50,11 +50,11 @@ public class Sample implements java.io.Serializable {
     }
 
     @Column(name = "SAMPLE_CODE", unique = true, nullable = false, length = 10)
-    public String getStockCode() {
+    public String getSampleCode() {
 	return this.sampleCode;
     }
 
-    public void setStockCode(String stockCode) {
+    public void setSampleCode(String stockCode) {
 	this.sampleCode = stockCode;
     }
 
@@ -132,12 +132,12 @@ public class Sample implements java.io.Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "machiene_id")
-    public Set<Machiene> getMachienes() {
-        return machieneTimings;
+    public Set<Machine> getMachines() {
+        return machineTimings;
     }
 
-    public void setMachienes(Set<Machiene> machieneTimings) {
-        this.machieneTimings = machieneTimings;
+    public void setMachines(Set<Machine> machineTimings) {
+        this.machineTimings = machineTimings;
     }
     
     @Override

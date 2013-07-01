@@ -9,19 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "machiene")
-public class Machiene {
+@Table(name = "machine")
+public class Machine {
 
     private Integer id;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "MACHIENE_ID", unique = true, nullable = false)
-    public Integer getMachieneId() {
+    @Column(name = "MACHINE_ID", unique = true, nullable = false)
+    public Integer getMachineId() {
 	return id;
     }
 
-    public void setMachieneId(Integer id) {
+    public void setMachineId(Integer id) {
 	this.id = id;
     }
 

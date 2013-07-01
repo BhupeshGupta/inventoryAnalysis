@@ -11,25 +11,21 @@ import com.zist.util.CustomHibernateDaoSupport;
 @Repository("sampleDao")
 public class SampleDaoImpl extends CustomHibernateDaoSupport implements SampleDao{
 
-    @Override
     public void save(Sample sample) {
 	getHibernateTemplate().save(sample);
 	
     }
 
-    @Override
     public void update(Sample sample) {
 	getHibernateTemplate().update(sample);
 	
     }
 
-    @Override
     public void delete(Sample sample) {
 	getHibernateTemplate().delete(sample);
 	
     }
 
-    @Override
     public Sample findBySampleCode(String SampleCode) {
 	@SuppressWarnings("rawtypes")
 	List list = getHibernateTemplate().find("from Sample where SAMPLE_CODE=?", SampleCode);
@@ -39,7 +35,6 @@ public class SampleDaoImpl extends CustomHibernateDaoSupport implements SampleDa
 		return null;
     }
 
-    @Override
     public Sample findBySampleId(String SampleId) {
 	@SuppressWarnings("rawtypes")
 	List list = getHibernateTemplate().find("from Sample where SAMPLE_ID=?", SampleId);

@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zist.dao.SampleDao;
-import com.zist.model.Machiene;
+import com.zist.model.Machine;
 import com.zist.model.Sample;
 
 public class App {
@@ -24,16 +24,16 @@ public class App {
 
 	System.out.println("Sample created!!");
 	Sample sample = new Sample();
-	sample.setStockCode(sampleCode);
+	sample.setSampleCode(sampleCode);
 	
-	Machiene machiene1 = new Machiene();
-	Machiene machiene2 = new Machiene();
+	Machine machiene1 = new Machine();
+	Machine machiene2 = new Machine();
 	
-	Set<Machiene> machienes = new HashSet<Machiene>();
+	Set<Machine> machienes = new HashSet<Machine>();
 	machienes.add(machiene1);
 	machienes.add(machiene2);
 	
-	sample.setMachienes(machienes);
+	sample.setMachines(machienes);
 	
 	try {
 	    sampleDao.save(sample);

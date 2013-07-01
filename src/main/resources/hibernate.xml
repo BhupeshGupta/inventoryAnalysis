@@ -23,7 +23,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		<property name="annotatedClasses">
 			<list>
 				<value>com.zist.model.Sample</value>
-				<value>com.zist.model.Machienedesc</value>
+				<value>com.zist.model.Machine</value>
 			</list>
 		</property>
 	</bean>
