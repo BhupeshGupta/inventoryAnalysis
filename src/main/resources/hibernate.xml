@@ -24,6 +24,9 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 			<list>
 				<value>com.zist.model.Sample</value>
 				<value>com.zist.model.Machine</value>
+				<value>com.zist.model.Style</value>
+				<value>com.zist.model.Yarn</value>
+				<value>com.zist.model.Description</value>
 			</list>
 		</property>
 	</bean>

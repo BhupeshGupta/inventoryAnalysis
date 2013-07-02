@@ -13,9 +13,9 @@ import javax.persistence.Table;
 public class Yarn {
 
 	private Integer yarnId;
-	private Float yarnCount;
+	private Double yarnCount;
 	private String type;
-	private Float price;
+	private Double price;
 	
 @Id
 @GeneratedValue(strategy = IDENTITY)
@@ -29,11 +29,11 @@ public void setYarnId(Integer id){
 }
 
 @Column(name = "YARN_COUNT" , unique = false , nullable = false)
-public Float getYarnCount(){
+public Double getYarnCount(){
 	return yarnCount;
 }
 
-public void setYarnCount(Float count){
+public void setYarnCount(Double count){
 	this.yarnCount = count;
 }
 
@@ -47,11 +47,11 @@ public void setYarnType(String type){
 }
 
 @Column(name = "YARN_PRICE" , unique = false )
-public Float getYarnPrice(){
+public Double getYarnPrice(){
 	return price;
 }
 
-public void setYarnPrice(Float price){
+public void setYarnPrice(Double price){
 	this.price = price;
 }
 }

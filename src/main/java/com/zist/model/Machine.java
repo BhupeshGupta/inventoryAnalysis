@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Machine {
 
     private Integer id;
-    private Float gauge;
+    private Double gauge;
     
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -27,12 +27,14 @@ public class Machine {
     }
 
     @Column(name = "MACHINE_GAUGE" , unique = false , nullable = false)
-    public Float getMachineGauge(){
+    public Double getMachineGauge(){
     return gauge;	
     }
     
-    public void setMachineGauge(Float gauge){
+    public void setMachineGauge(Double gauge){
     this.gauge = gauge;	
     }
+    
+    
 
 }

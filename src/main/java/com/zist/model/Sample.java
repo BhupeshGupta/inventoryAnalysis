@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,7 +30,11 @@ public class Sample implements java.io.Serializable {
     private String view;
     private String designFile;
     private String gender;
+    private Style style;
     private Set<Machine> machineTimings;
+    private Set<Yarn> yarn;
+    private Description description;
+    
 
     public Sample() {
     }
@@ -131,16 +136,48 @@ public class Sample implements java.io.Serializable {
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "machiene_id")
+    @JoinColumn(name = "MACHINE_ID")
     public Set<Machine> getMachines() {
         return machineTimings;
     }
-
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "YARN_ID")
+    public Set<Yarn> getYarn(){
+    	return yarn;
+    }
+    
+    public void setYarn(Set<Yarn> yarn) {
+        this.yarn = yarn;
+    }
+    
+    
+    public void setStyle(Style style){
+    	this.style = style;
+    }
+    
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "STYLE_ID")
+    public Style getStyle(){
+    	return this.style;
+    }
+    
+    
     public void setMachines(Set<Machine> machineTimings) {
         this.machineTimings = machineTimings;
     }
     
-    @Override
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "DESCRIPTION_ID")
+    public Description getDescription() {
+		return description;
+	}
+
+	public void setDescription(Description description) {
+		this.description = description;
+	}
+
+	@Override
     public String toString() {
 	return "Sample [sampleCode=" + sampleCode + ", sampleId=" + sampleId
 		+  "]";

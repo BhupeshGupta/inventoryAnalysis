@@ -59,11 +59,11 @@ public class Description {
 	
 	@Column(name = "Accessories",length = 25)
 	public String getAccessories(){
-		return accessories;
+		return this.accessories;
 	}
 	
-	public void setAcceessories(String accessories){
-		this.buttonStyle = accessories;
+	public void setAccessories(String accessories){
+		this.accessories = accessories;
 	}
 	
 }
