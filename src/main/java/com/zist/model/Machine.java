@@ -13,16 +13,26 @@ import javax.persistence.Table;
 public class Machine {
 
     private Integer id;
-
+    private Float gauge;
+    
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "MACHINE_ID", unique = true, nullable = false)
     public Integer getMachineId() {
 	return id;
     }
-
+    
     public void setMachineId(Integer id) {
 	this.id = id;
+    }
+
+    @Column(name = "MACHINE_GAUGE" , unique = false , nullable = false)
+    public Float getMachineGauge(){
+    return gauge;	
+    }
+    
+    public void setMachineGauge(Float gauge){
+    this.gauge = gauge;	
     }
 
 }

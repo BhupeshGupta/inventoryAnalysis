@@ -22,7 +22,7 @@ public class Sample implements java.io.Serializable {
     private Integer sampleId;
     private String sampleCode;
     private String category;
-    private Integer popularity;
+    private Float popularity;
     private String year;
     private Float weight;
     private Float price;
@@ -68,11 +68,11 @@ public class Sample implements java.io.Serializable {
     }
 
     @Column(name = "SAMPLE_POPULARITY", unique = false)
-    public Integer getPopularity() {
+    public Float getPopularity() {
 	return popularity;
     }
 
-    public void setPopularity(Integer popularity) {
+    public void setPopularity(Float popularity) {
 	this.popularity = popularity;
     }
     
@@ -121,7 +121,7 @@ public class Sample implements java.io.Serializable {
         this.designFile = designfile;
     }
 
-    @Column(name = "SAMPLE_GENDER", unique = false, length = 2)
+    @Column(name = "SAMPLE_GENDER", unique = false, length = 6)
     public String getGender() {
         return gender;
     }
@@ -142,7 +142,7 @@ public class Sample implements java.io.Serializable {
     
     @Override
     public String toString() {
-	return "Stock [stockCode=" + sampleCode + ", stockId=" + sampleId
+	return "Sample [sampleCode=" + sampleCode + ", sampleId=" + sampleId
 		+  "]";
     }
 }
