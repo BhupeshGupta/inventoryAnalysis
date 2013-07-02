@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.zist.dao.DescriptionDao;
+import com.zist.frwkutil.CustomHibernateDaoSupport;
 import com.zist.model.Description;
-import com.zist.util.CustomHibernateDaoSupport;
 
 @Repository("descriptionDao")
 public class DescriptionDaoImpl extends CustomHibernateDaoSupport implements DescriptionDao{

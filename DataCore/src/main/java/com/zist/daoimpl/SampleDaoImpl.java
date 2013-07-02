@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.zist.dao.SampleDao;
+import com.zist.frwkutil.CustomHibernateDaoSupport;
 import com.zist.model.Sample;
-import com.zist.util.CustomHibernateDaoSupport;
 
 @Repository("sampleDao")
 public class SampleDaoImpl extends CustomHibernateDaoSupport implements SampleDao{

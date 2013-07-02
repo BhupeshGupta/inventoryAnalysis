@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.zist.dao.StyleDao;
+import com.zist.frwkutil.CustomHibernateDaoSupport;
 import com.zist.model.Style;
-import com.zist.util.CustomHibernateDaoSupport;
 
 @Repository("styleDao")
 public class StyleDaoImpl extends CustomHibernateDaoSupport implements StyleDao{

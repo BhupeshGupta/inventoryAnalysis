@@ -1,4 +1,4 @@
-package com.zist.util;
+package com.zist.frwkutil;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

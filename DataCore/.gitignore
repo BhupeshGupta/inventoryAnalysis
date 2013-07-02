@@ -6,5 +6,5 @@
 *.ear
 /target/
 /.settings/
-/.metadata/
-/RemoteSystemsTempFiles/
+/*.classpath
+/*.project

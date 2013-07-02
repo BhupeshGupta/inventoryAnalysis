@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.zist.dao.YarnDao;
+import com.zist.frwkutil.CustomHibernateDaoSupport;
 import com.zist.model.Yarn;
-import com.zist.util.CustomHibernateDaoSupport;
 
 @Repository("yarnDao")
 public class YarnDaoImpl extends CustomHibernateDaoSupport implements YarnDao{
