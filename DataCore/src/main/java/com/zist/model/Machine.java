@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class Machine {
 
     private Integer id;
+    private String machineCode;
     private Double gauge;
     
     @Id
@@ -34,6 +35,14 @@ public class Machine {
     public void setMachineGauge(Double gauge){
     this.gauge = gauge;	
     }
+
+	public String getMachineCode() {
+		return machineCode;
+	}
+
+	public void setMachineCode(String machineCode) {
+		this.machineCode = machineCode;
+	}
     
     
 

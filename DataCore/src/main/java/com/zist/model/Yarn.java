@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class Yarn {
 
 	private Integer yarnId;
+	private String yarnCode;
 	private Double yarnCount;
 	private String type;
 	private Double price;
@@ -53,5 +54,13 @@ public Double getYarnPrice(){
 
 public void setYarnPrice(Double price){
 	this.price = price;
+}
+
+public String getYarnCode() {
+	return yarnCode;
+}
+
+public void setYarnCode(String yarnCode) {
+	this.yarnCode = yarnCode;
 }
 }

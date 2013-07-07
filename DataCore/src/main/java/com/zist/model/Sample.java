@@ -31,7 +31,7 @@ public class Sample implements java.io.Serializable {
     private String designFile;
     private String gender;
     private Style style;
-    private Set<Machine> machineTimings;
+    private Set<Machine> machines;
     private Set<Yarn> yarn;
     private Description description;
     
@@ -46,11 +46,11 @@ public class Sample implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "SAMPLE_ID", unique = true, nullable = false)
-    public Integer getStockId() {
+    public Integer getSampleId() {
 	return this.sampleId;
     }
 
-    public void setStockId(Integer stockId) {
+    public void setSampleId(Integer stockId) {
 	this.sampleId = stockId;
     }
 
@@ -138,7 +138,7 @@ public class Sample implements java.io.Serializable {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "MACHINE_ID")
     public Set<Machine> getMachines() {
-        return machineTimings;
+        return machines;
     }
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -164,7 +164,7 @@ public class Sample implements java.io.Serializable {
     
     
     public void setMachines(Set<Machine> machineTimings) {
-        this.machineTimings = machineTimings;
+        this.machines = machineTimings;
     }
     
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

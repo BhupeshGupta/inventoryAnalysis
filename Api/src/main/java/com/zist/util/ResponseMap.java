@@ -8,7 +8,7 @@ public class ResponseMap extends HashMap<String, Object> {
 	public ResponseMap() {
 		super();
 		this.put("status", "0");
-		this.put("message", "Unknown Error");
+		this.put("message", "Message Not Supplied");
 	}
 	
 	public void setStatus(String status){
@@ -25,6 +25,11 @@ public class ResponseMap extends HashMap<String, Object> {
 	
 	public String getMessage(){
 		return (String)this.get("message");
+	}
+	
+	public void setError(String error){
+		this.setStatus("1");
+		this.setMessage(error);
 	}
 
 }

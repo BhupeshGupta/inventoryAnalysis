@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class Style {
 
 	private Integer styleId;
+	private String  styleCode;
 	private String  knitPattern;
 	
 	@Id
@@ -34,5 +35,13 @@ public class Style {
 	
 	public void setKnitPattern(String pattern){
 		this.knitPattern = pattern;
+	}
+
+	public String getStyleCode() {
+		return styleCode;
+	}
+
+	public void setStyleCode(String styleCode) {
+		this.styleCode = styleCode;
 	}
 }
