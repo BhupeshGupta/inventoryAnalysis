@@ -9,7 +9,7 @@ import com.zist.model.Yarn;
 import com.zist.service.YarnService;
 import com.zist.util.ResponseMap;
 
-public class yarnController {
+public class YarnController {
 
 	@Autowired
 	YarnService yarnService;

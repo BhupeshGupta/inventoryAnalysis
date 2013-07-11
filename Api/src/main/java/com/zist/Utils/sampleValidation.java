@@ -4,7 +4,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.zist.dao.StyleDao;
 import com.zist.model.Description;
 import com.zist.model.Machine;
 import com.zist.model.Sample;
@@ -17,28 +16,37 @@ import com.zist.service.YarnService;
 import com.zist.util.ResponseMap;
 
 public class sampleValidation {
+
+	@Autowired
+	static StyleService styleService;
+	@Autowired
+	static MachineService machineService;
+	@Autowired
+	static YarnService yarnService;
+	@Autowired
+	static DescriptionService descriptionService;
+
+	
+	@SuppressWarnings("null")
 	public static Sample validateSampleAndGetSample(ResponseMap response,
 			String sampleCode, String category, Float popularity, String year,
 			Float weight, Float price, String view, String designFile,
 			String gender, String styleID, String[] machineIDs, String[] yarns,
 			String descriptionID) {
 
-		@Autowired
-		StyleService styleService;
-		@Autowired
-		MachineService machineService;
-		@Autowired
-		YarnService yarnService;
-		@Autowired
-		DescriptionService descriptionService;
 		
-		Style style;
-		Set<Machine> machines;
-		Set<Yarn> yarn;
-		Description description;
+		Style style = null;
+		Set<Machine> machines = null;
+		Set<Yarn> yarn = null;
+		@SuppressWarnings("unused")
+		Description description = null;
 
 		int validatedYear;
+
+		@SuppressWarnings("unused")
 		int validatedStyleID;
+
+		@SuppressWarnings("unused")
 		int validatedDescriptionID;
 		
 		// TODO: Get parameters, validate and plug it in sample entity

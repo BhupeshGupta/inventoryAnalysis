@@ -5,10 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.zist.dao.DescriptionDao;
 import com.zist.model.Description;
+import com.zist.service.DescriptionService;
 
 
 @Service("descriptionService")
-public class DescriptionServiceImpl {
+public class DescriptionServiceImpl implements DescriptionService{
 
 	@Autowired
 	DescriptionDao descriptionDao;
@@ -28,7 +29,7 @@ public class DescriptionServiceImpl {
 		
 	    }
 
-	    public Description findByDescriptionId(String DescriptionId) {
+	    public Description findByDescriptionID(String DescriptionId) {
 		return descriptionDao.findByDescriptionId(DescriptionId);
 	    }
 }

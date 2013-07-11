@@ -14,7 +14,8 @@ import com.zist.model.Yarn;
 import com.zist.service.SampleService;
 import com.zist.util.ResponseMap;
 
-public class sampleController {
+public class SampleController {
+
 	@Autowired
 	SampleService sampleService;
 

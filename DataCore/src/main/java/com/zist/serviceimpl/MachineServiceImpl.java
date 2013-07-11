@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.zist.dao.MachineDao;
 import com.zist.model.Machine;
+import com.zist.service.MachineService;
 
 @Service("machineService")
-public class MachineServiceImpl {
+public class MachineServiceImpl  implements MachineService{
 
 	@Autowired
 	MachineDao machineDao;
@@ -31,7 +32,7 @@ public class MachineServiceImpl {
 		return machineDao.findByMachineCode(MachineCode);
 	    }
 
-	    public Machine findByMachineId(String MachineId) {
+	    public Machine findByMachineID(String MachineId) {
 		return machineDao.findByMachineId(MachineId);
 	    }
 }

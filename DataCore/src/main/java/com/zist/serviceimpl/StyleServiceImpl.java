@@ -5,10 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.zist.dao.StyleDao;
 import com.zist.model.Style;
+import com.zist.service.StyleService;
 
 
 @Service("styleService")
-public class StyleServiceImpl {
+public class StyleServiceImpl implements StyleService{
 
 	@Autowired
 	StyleDao styleDao;
@@ -32,7 +33,8 @@ public class StyleServiceImpl {
 		return styleDao.findByStyleCode(StyleCode);
 	    }
 
-	    public Style findByStyleId(String StyleId) {
+	    public Style findByStyleID(String StyleId) {
 		return styleDao.findByStyleId(StyleId);
 	    }
+
 }

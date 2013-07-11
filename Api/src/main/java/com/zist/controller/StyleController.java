@@ -9,7 +9,7 @@ import com.zist.model.Style;
 import com.zist.service.StyleService;
 import com.zist.util.ResponseMap;
 
-public class styleController {
+public class StyleController {
 
 	@Autowired
 	StyleService styleService;

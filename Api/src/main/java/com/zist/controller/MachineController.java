@@ -9,7 +9,7 @@ import com.zist.model.Machine;
 import com.zist.service.MachineService;
 import com.zist.util.ResponseMap;
 
-public class machineController {
+public class MachineController {
 
 	@Autowired
 	MachineService machineService;

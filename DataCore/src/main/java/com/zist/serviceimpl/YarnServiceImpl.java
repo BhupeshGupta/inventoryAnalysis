@@ -5,10 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.zist.dao.YarnDao;
 import com.zist.model.Yarn;
+import com.zist.service.YarnService;
 
 
 @Service("yarnService")
-public class YarnServiceImpl {
+public class YarnServiceImpl  implements YarnService{
 
 	@Autowired
 	YarnDao yarnDao;
@@ -32,7 +33,7 @@ public class YarnServiceImpl {
 		return yarnDao.findByYarnCode(YarnCode);
 	    }
 
-	    public Yarn findByYarnId(String YarnId) {
+	    public Yarn findByYarnID(String YarnId) {
 		return yarnDao.findByYarnId(YarnId);
 	    }
 }
