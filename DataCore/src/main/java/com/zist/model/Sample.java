@@ -33,13 +33,13 @@ public class Sample implements java.io.Serializable {
     private Style style;
     private Set<Machine> machines;
     private Set<Yarn> yarn;
-    private Description description;
+    private String description;
     
 
     public Sample() {
     }
 
-    public Sample(String sampleCode, String stockName) {
+    public Sample(String sampleCode) {
 	this.sampleCode = sampleCode;
     }
 
@@ -167,13 +167,11 @@ public class Sample implements java.io.Serializable {
         this.machines = machineTimings;
     }
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "DESCRIPTION_ID")
-    public Description getDescription() {
+    public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(Description description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

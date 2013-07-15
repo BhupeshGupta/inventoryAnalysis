@@ -14,9 +14,9 @@ public class Yarn {
 
 	private Integer yarnId;
 	private String yarnCode;
-	private Double yarnCount;
+	private Float yarnCount;
 	private String type;
-	private Double price;
+	private Float price;
 	
 @Id
 @GeneratedValue(strategy = IDENTITY)
@@ -30,11 +30,11 @@ public void setYarnId(Integer id){
 }
 
 @Column(name = "YARN_COUNT" , unique = false , nullable = false)
-public Double getYarnCount(){
+public Float getYarnCount(){
 	return yarnCount;
 }
 
-public void setYarnCount(Double count){
+public void setYarnCount(Float count){
 	this.yarnCount = count;
 }
 
@@ -48,14 +48,15 @@ public void setYarnType(String type){
 }
 
 @Column(name = "YARN_PRICE" , unique = false )
-public Double getYarnPrice(){
+public Float getYarnPrice(){
 	return price;
 }
 
-public void setYarnPrice(Double price){
+public void setYarnPrice(Float price){
 	this.price = price;
 }
 
+@Column(name = "YARN_CODE")
 public String getYarnCode() {
 	return yarnCode;
 }

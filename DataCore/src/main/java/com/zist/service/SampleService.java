@@ -2,7 +2,6 @@ package com.zist.service;
 
 import java.util.Set;
 
-import com.zist.model.Description;
 import com.zist.model.Machine;
 import com.zist.model.Sample;
 import com.zist.model.Style;
@@ -16,7 +15,6 @@ public interface SampleService {
 
     Sample findBySampleCode(String SampleCode);
     Sample findBySampleId(String SampleId);
-    // TODO: alter addMachine func.
  
     void addSetOfMachines(Sample sample,Set<Machine> machines);
     void updateSetOfMachines(Sample sample,Set<Machine> machines);
@@ -27,7 +25,7 @@ public interface SampleService {
     void addSetOfYarns(Sample sample,Set<Yarn> yarns);
     void updateSetOfYarns(Sample sample,Set<Yarn> yarns);
 
-    void addDescription(Sample sample,Description decription);
-    void updateDescritpion(Sample sample,Description description);
+    void addDescription(Sample sample,String decription);
+    void updateDescritpion(Sample sample,String description);
     
 }

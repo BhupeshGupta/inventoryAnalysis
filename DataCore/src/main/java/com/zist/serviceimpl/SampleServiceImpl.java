@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zist.dao.SampleDao;
-import com.zist.model.Description;
 import com.zist.model.Machine;
 import com.zist.model.Sample;
 import com.zist.model.Style;
 import com.zist.model.Yarn;
 import com.zist.service.SampleService;
 
-@Service("sampelService")
+@Service("sampleService")
 public class SampleServiceImpl implements SampleService {
     
     @Autowired
@@ -76,12 +75,12 @@ public class SampleServiceImpl implements SampleService {
 		
 	}
 
-	public void addDescription(Sample sample, Description decription) {
+	public void addDescription(Sample sample, String decription) {
 		sample.setDescription(decription);
 		sampleDao.save(sample);
 	}
 
-	public void updateDescritpion(Sample sample, Description description) {
+	public void updateDescritpion(Sample sample, String description) {
 		sample.setDescription(description);
 		sampleDao.update(sample);
 		

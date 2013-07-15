@@ -1,69 +1,105 @@
 package com.zist.model;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "Description")
+import java.util.ArrayList;
 
 public class Description {
 
-	private Integer descriptionId;
-	private String availableSize;
+	private ArrayList<String> availableSizes = new ArrayList<String>();
+	private ArrayList<String> accessories = new ArrayList<String>();
+	private ArrayList<String> availableColor = new ArrayList<String>();
 	private String buttonStyle;
-	private String color;
-	private String accessories;
+	private String buttonSize;
+
 	
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "DESCRIPTION_ID", unique = true, nullable = false)
-	public Integer getDescriptionId(){
-		return descriptionId;
+	public Description(String[] sizeDescription,String buttonStyle,String buttonSize,String[] accessories,
+			String[] color){
+
+		// Adding sizes to the list
+		
+		for (int i = 0; i < sizeDescription.length; i++) {
+			sizeDescription[i] = sizeDescription[i].toUpperCase();
+			availableSizes.add(sizeDescription[i]);
+			}
+		
+		// initializing button style
+		
+		this.buttonStyle = buttonStyle;
+		
+		// Initializing button size
+		
+		this.buttonSize = buttonSize;
+		
+		// Initializing accessories
+
+		for (int i = 0; i < accessories.length; i++) {
+			accessories[i] = accessories[i].toUpperCase();
+			this.accessories.add(accessories[i]);
+			}
+
+		// Initialize Color
+		
+		for (int i = 0; i < color.length; i++) {
+			color[i] = color[i].toUpperCase();
+			availableColor.add(color[i]);
+			}
+
 	}
-	
-	public void setDescriptionId(Integer id){
-		this.descriptionId = id;
+
+
+	public ArrayList<String> getAvailableSizes() {
+		return availableSizes;
 	}
-	
-	@Column(name = "SIZE",length = 25,nullable = false)	
-	public String getSize(){
-		return availableSize;
+
+
+	public void setAvailableSizes(ArrayList<String> availableSizes) {
+		this.availableSizes = availableSizes;
 	}
-	
-	public void setSize(String size){
-		this.availableSize=size;
+
+
+	public ArrayList<String> getAccessories() {
+		return accessories;
 	}
-	
-	@Column(name = "BUTTON_STYLE",length = 25)
-	public String getButtonStyle(){
+
+
+	public void setAccessories(ArrayList<String> accessories) {
+		this.accessories = accessories;
+	}
+
+
+	public ArrayList<String> getAvailableColor() {
+		return availableColor;
+	}
+
+
+	public void setAvailableColor(ArrayList<String> availableColor) {
+		this.availableColor = availableColor;
+	}
+
+
+	public String getButtonStyle() {
 		return buttonStyle;
 	}
-	
-	public void setButtonStyle(String style){
-		this.buttonStyle = style;
+
+
+	public void setButtonStyle(String buttonStyle) {
+		this.buttonStyle = buttonStyle;
+	}
+
+
+	public String getButtonSize() {
+		return buttonSize;
+	}
+
+
+	public void setButtonSize(String buttonSize) {
+		this.buttonSize = buttonSize;
 	}
 	
-	@Column(name = "COLOR",length = 25)
-	public String getColor(){
-		return color;
-	}
-	
-	public void setColor(String color){
-		this.color = color;
-	}
-	
-	@Column(name = "Accessories",length = 25)
-	public String getAccessories(){
-		return this.accessories;
-	}
-	
-	public void setAccessories(String accessories){
-		this.accessories = accessories;
+	@Override
+	public String toString() {
+		return "Description [size=" + availableSizes + ", ButtonStyle =" + buttonStyle + ", ButtonSize =" +
+				buttonSize + ", Accessories =" + accessories + ", AvailableColors = "+ availableColor 
+				+"]";
 	}
 	
 }

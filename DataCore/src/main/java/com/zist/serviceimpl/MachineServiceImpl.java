@@ -14,6 +14,7 @@ public class MachineServiceImpl  implements MachineService{
 	MachineDao machineDao;
 	
 	public void save(Machine machine) {
+		System.out.println(machine.getMachineCode() + "   " + machine.getMachineGauge());
 		machineDao.save(machine);
 		
 	    }

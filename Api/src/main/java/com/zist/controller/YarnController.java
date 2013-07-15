@@ -3,19 +3,22 @@ package com.zist.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Controller;
 
-import com.zist.Utils.yarnValidation;
 import com.zist.model.Yarn;
 import com.zist.service.YarnService;
-import com.zist.util.ResponseMap;
+import com.zist.utils.ResponseMap;
+import com.zist.utils.yarnValidation;
 
+@Controller
 public class YarnController {
 
 	@Autowired
 	YarnService yarnService;
 	
 	@SuppressWarnings("rawtypes")
-	Map getYarn(String yarnCode){
+	public Map getYarn(String yarnCode){
 		ResponseMap response = new ResponseMap();
 		Yarn yarn = yarnService.findByYarnCode(yarnCode);
 
@@ -29,7 +32,7 @@ public class YarnController {
 	}
 
 	@SuppressWarnings("rawtypes")
-	Map createYarn(String yarnCode,Double yarnCount,String type,Double price) {
+	public Map createYarn(String yarnCode,String yarnCount,String type,String price) {
 
 		ResponseMap response = new ResponseMap();
 
@@ -39,13 +42,19 @@ public class YarnController {
 		if (yarn == null)
 			return response;
 		
-		yarnService.save(yarn);
+		try {
+			yarnService.save(yarn);
+		} catch (DataIntegrityViolationException e) {
+			response.setError("Yarn already Exist ");
+			return response;
+		}
 		
 		response.put("yarn", yarn);
 		return response;
 	}
 	
-	Map deleteYarn(String yarnCode){
+	@SuppressWarnings("rawtypes")
+	public Map deleteYarn(String yarnCode){
 		
 		ResponseMap response = new ResponseMap();
 
@@ -60,7 +69,8 @@ public class YarnController {
 	    return response;
 	}
 	
-	Map updateYarn(String yarnCode,Double yarnCount,String type,Double price){
+	@SuppressWarnings("rawtypes")
+	public Map updateYarn(String yarnCode,String yarnCount,String type,String price){
 
 		ResponseMap response = new ResponseMap();
 		
@@ -70,6 +80,8 @@ public class YarnController {
 		
 	    if(oldYarn == null){
 	    	response.setError("Yarn Does not exist ");
+	    } else if(yarn == null){
+	    	return response;
 	    }
 	    else{
 	    	yarn.setYarnId(oldYarn.getYarnId());

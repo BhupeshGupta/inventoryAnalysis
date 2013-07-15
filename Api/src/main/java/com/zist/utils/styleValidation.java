@@ -1,7 +1,6 @@
-package com.zist.Utils;
+package com.zist.utils;
 
 import com.zist.model.Style;
-import com.zist.util.ResponseMap;
 
 public class styleValidation {
 

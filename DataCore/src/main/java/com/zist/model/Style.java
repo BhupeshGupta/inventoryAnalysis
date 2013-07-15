@@ -37,6 +37,7 @@ public class Style {
 		this.knitPattern = pattern;
 	}
 
+	@Column(name = "STYLE_CODE", unique = true , nullable =false)
 	public String getStyleCode() {
 		return styleCode;
 	}

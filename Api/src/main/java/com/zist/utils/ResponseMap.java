@@ -1,4 +1,4 @@
-package com.zist.util;
+package com.zist.utils;
 
 import java.util.HashMap;
 

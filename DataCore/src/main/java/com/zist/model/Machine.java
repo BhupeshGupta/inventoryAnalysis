@@ -14,7 +14,7 @@ public class Machine {
 
     private Integer id;
     private String machineCode;
-    private Double gauge;
+    private Float gauge;
     
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -28,14 +28,15 @@ public class Machine {
     }
 
     @Column(name = "MACHINE_GAUGE" , unique = false , nullable = false)
-    public Double getMachineGauge(){
+    public Float getMachineGauge(){
     return gauge;	
     }
     
-    public void setMachineGauge(Double gauge){
+    public void setMachineGauge(Float gauge){
     this.gauge = gauge;	
     }
 
+    @Column(name = "MACHINE_CODE",unique = true, nullable = false)
 	public String getMachineCode() {
 		return machineCode;
 	}
@@ -43,7 +44,4 @@ public class Machine {
 	public void setMachineCode(String machineCode) {
 		this.machineCode = machineCode;
 	}
-    
-    
-
 }

@@ -13,7 +13,11 @@
 		<repository>
 			<id>repository.jboss.org-public</id>
 			<name>JBoss repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>			
+		</repository>
+		<repository>
+		<id>codehaus</id>
+			<url>http://repository.codehaus.org/org/codehaus</url>
 		</repository>
 	</repositories>
 
@@ -26,7 +30,11 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.7.1</version>
+  		</dependency>
 		<!-- Spring framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>

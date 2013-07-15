@@ -3,82 +3,90 @@ package com.zist.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Controller;
 
-import com.zist.Utils.machineValidation;
 import com.zist.model.Machine;
 import com.zist.service.MachineService;
-import com.zist.util.ResponseMap;
+import com.zist.utils.ResponseMap;
+import com.zist.utils.machineValidation;
 
+@Controller
 public class MachineController {
 
 	@Autowired
 	MachineService machineService;
-	
+
 	@SuppressWarnings("rawtypes")
-	Map getMachine(String machineCode){
+	public Map getMachine(String machineCode) {
 
 		ResponseMap response = new ResponseMap();
 		Machine machine = machineService.findByMachineCode(machineCode);
 
-		if(machine == null){
-	    	response.setError("Machine Does not exist ");
-	    }
-		else{
+		if (machine == null) {
+			response.setError("Machine Does not exist ");
+		} else {
 			response.put("machine", machine);
 		}
 		return response;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
-	Map createMachine(String machineCode,Double gauge) {
+	public Map createMachine(String machineCode, String gauge) {
 
 		ResponseMap response = new ResponseMap();
 
-		
-		Machine machine = machineValidation.validateMachineAndGetMachine(response, machineCode, gauge);
-		
+		Machine machine = machineValidation.validateMachineAndGetMachine(
+				response, machineCode, gauge);
+
 		if (machine == null)
 			return response;
-		
-		machineService.save(machine);
-		
+
+		try {
+			machineService.save(machine);
+		} catch (DataIntegrityViolationException e) {
+			response.setError("Machine already Exist ");
+			return response;
+		}
+
 		response.put("machine", machine);
 		return response;
 	}
 
 	@SuppressWarnings("rawtypes")
-	Map deleteMachine(String machineCode){
+	public Map deleteMachine(String machineCode) {
 		ResponseMap response = new ResponseMap();
 
 		Machine machine = machineService.findByMachineCode(machineCode);
 
-		if(machine == null){
-	    	response.setError("Machine Does not exist ");
-	    }
-	    else{
-	    	response.put("machine", machine);
-	    }
-	    return response;
+		if (machine == null) {
+			response.setError("Machine Does not exist ");
+		} else {
+			response.put("machine", machine);
+		}
+		return response;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
-	Map updateMachine(String machineCode,Double gauge){
+	public Map updateMachine(String machineCode, String gauge) {
 
 		ResponseMap response = new ResponseMap();
-		
-		Machine machine = machineValidation.validateMachineAndGetMachine(response, machineCode, gauge);
+
+		Machine machine = machineValidation.validateMachineAndGetMachine(
+				response, machineCode, gauge);
 
 		Machine oldMachine = machineService.findByMachineCode(machineCode);
-	    if(oldMachine == null){
-	    	response.setError("Machine Does not exist ");
-	    }
-	    else{
-	    	machine.setMachineId(oldMachine.getMachineId());
-	    	machineService.update(machine);
-	     	response.put("machine", machine);
-	    }
+		if (oldMachine == null) {
+			response.setError("Machine Does not exist ");
+		} else if (machine == null) {
+			return response;
+		} else {
+			machine.setMachineId(oldMachine.getMachineId());
+			machineService.update(machine);
+			response.put("machine", machine);
+		}
 
-	    return response;		
+		return response;
 	}
-	
+
 }
