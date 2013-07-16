@@ -2,6 +2,7 @@ package com.zist.service;
 
 import java.util.Set;
 
+import com.zist.model.Description;
 import com.zist.model.Machine;
 import com.zist.model.Sample;
 import com.zist.model.Style;
@@ -24,8 +25,7 @@ public interface SampleService {
  
     void addSetOfYarns(Sample sample,Set<Yarn> yarns);
     void updateSetOfYarns(Sample sample,Set<Yarn> yarns);
-
-    void addDescription(Sample sample,String decription);
-    void updateDescritpion(Sample sample,String description);
-    
+   
+    String getDescriptionJason(Description description);
+	Description getDescritpion(String description);
 }

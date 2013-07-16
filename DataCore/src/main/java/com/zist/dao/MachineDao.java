@@ -1,5 +1,7 @@
 package com.zist.dao;
 
+import org.hibernate.Session;
+
 import com.zist.model.Machine;
 
 public interface MachineDao {
@@ -9,5 +11,5 @@ public interface MachineDao {
     void delete(Machine machine);
     Machine findByMachineCode(String MachineCode);
     Machine findByMachineId(String MachineId);
-
+    Session retrieveSession();
 }

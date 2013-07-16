@@ -1,5 +1,6 @@
 package com.zist.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import com.zist.model.Machine;
 import com.zist.service.MachineService;
+import com.zist.service.SearchService;
 import com.zist.utils.ResponseMap;
 import com.zist.utils.machineValidation;
 
@@ -16,7 +18,28 @@ public class MachineController {
 
 	@Autowired
 	MachineService machineService;
+	
+	@Autowired
+	SearchService searchService;
 
+	@SuppressWarnings("rawtypes")
+	public Map getAllMachines(){
+
+		ResponseMap response = new ResponseMap();
+		ArrayList<Machine> machineList = new ArrayList<Machine>();
+		machineList =  searchService.searchMachine("","","","");
+		if (machineList.isEmpty()) {
+			response.setError("No Machine found ");
+			return response;
+
+		} else {
+			response.put("machineList", machineList);
+			return response;
+		}
+		
+		
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public Map getMachine(String machineCode) {
 
@@ -87,6 +110,26 @@ public class MachineController {
 		}
 
 		return response;
+	}
+	
+	public ResponseMap searchMachine(String machineCode, String startGauge,
+			String endGauge, String equalGauge){
+
+			ArrayList<Machine> machineList = new ArrayList<Machine>();
+	
+			machineList =  searchService.searchMachine(machineCode,startGauge,endGauge,equalGauge);
+		
+			ResponseMap response = new ResponseMap();
+
+			if (machineList.isEmpty()) {
+				response.setError("No Machine found ");
+				return response;
+
+			} else {
+				response.put("machineList", machineList);
+				return response;
+			}
+		
 	}
 
 }

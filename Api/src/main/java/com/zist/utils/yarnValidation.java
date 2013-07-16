@@ -38,7 +38,7 @@ public class yarnValidation {
 		
 		yarn.setYarnCode(yarnCode);
 		yarn.setYarnCount(validatedYarnCount);
-		yarn.setYarnType(type);
+		yarn.setYarnType(type.toUpperCase());
 		yarn.setYarnPrice(validatedPrice);
 		
 		return yarn;

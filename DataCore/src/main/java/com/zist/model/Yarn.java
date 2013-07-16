@@ -15,7 +15,7 @@ public class Yarn {
 	private Integer yarnId;
 	private String yarnCode;
 	private Float yarnCount;
-	private String type;
+	private String yarnType;
 	private Float price;
 	
 @Id
@@ -38,13 +38,19 @@ public void setYarnCount(Float count){
 	this.yarnCount = count;
 }
 
+@Override
+public String toString(){
+	String yarn = "YarnCode = "+yarnCode+ "  ,YarnCount = "+yarnCount+"  ,type = "+yarnType+"  .";
+	return yarn;
+}
+
 @Column(name = "YARN_TYPE" , unique = false , nullable = false , length = 15)
 public String getYarnType(){
-	return type;
+	return yarnType;
 }
 
 public void setYarnType(String type){
-	this.type = type;
+	this.yarnType = type;
 }
 
 @Column(name = "YARN_PRICE" , unique = false )
@@ -56,7 +62,7 @@ public void setYarnPrice(Float price){
 	this.price = price;
 }
 
-@Column(name = "YARN_CODE")
+@Column(name = "YARN_CODE", unique = true)
 public String getYarnCode() {
 	return yarnCode;
 }

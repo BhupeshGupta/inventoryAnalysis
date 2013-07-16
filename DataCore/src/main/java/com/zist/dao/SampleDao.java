@@ -1,5 +1,7 @@
 package com.zist.dao;
 
+import org.hibernate.Session;
+
 import com.zist.model.Sample;
 
 public interface SampleDao {
@@ -9,5 +11,5 @@ public interface SampleDao {
     void delete(Sample sample);
     Sample findBySampleCode(String SampleCode);
     Sample findBySampleId(String SampleId);
-    
+    Session retrieveSession();
 }

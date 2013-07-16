@@ -24,7 +24,7 @@ public class Sample implements java.io.Serializable {
     private String sampleCode;
     private String category;
     private Float popularity;
-    private String year;
+    private Float year;
     private Float weight;
     private Float price;
     private String view;
@@ -82,11 +82,11 @@ public class Sample implements java.io.Serializable {
     }
     
     @Column(name = "SAMPLE_YEAR", unique = false)
-    public String getYear() {
+    public Float getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(Float year) {
         this.year = year;
     }
 
@@ -167,6 +167,7 @@ public class Sample implements java.io.Serializable {
         this.machines = machineTimings;
     }
     
+    @Column(name = "SAMPLE_DESCRIPTION", unique = false)
     public String getDescription() {
 		return description;
 	}

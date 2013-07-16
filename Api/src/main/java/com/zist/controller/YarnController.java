@@ -1,5 +1,6 @@
 package com.zist.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 
 import com.zist.model.Yarn;
+import com.zist.service.SearchService;
 import com.zist.service.YarnService;
 import com.zist.utils.ResponseMap;
 import com.zist.utils.yarnValidation;
@@ -16,6 +18,8 @@ public class YarnController {
 
 	@Autowired
 	YarnService yarnService;
+	@Autowired
+	SearchService searchService;
 	
 	@SuppressWarnings("rawtypes")
 	public Map getYarn(String yarnCode){
@@ -92,4 +96,40 @@ public class YarnController {
 	    return response;		
 	}
 	
+	public ResponseMap searchYarn(String yarnCode, String startYarnCount,
+			String endYarnCount, String equalYarnCount, String type,
+			String startPrice, String endPrice, String equalPrice){
+
+			ArrayList<Yarn> yarnList = new ArrayList<Yarn>();
+	
+			yarnList =  searchService.searchYarn(yarnCode,startYarnCount,endYarnCount,
+					equalYarnCount,type,startPrice,endPrice,equalPrice);
+		
+			ResponseMap response = new ResponseMap();
+
+			if (yarnList.isEmpty()) {
+				response.setError("No Yarn found ");
+				return response;
+
+			} else {
+				response.put("yarnList", yarnList);
+				return response;
+			}		
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Map getAllYarns(){
+
+		ResponseMap response = new ResponseMap();
+		ArrayList<Yarn> yarnList = new ArrayList<Yarn>();
+		yarnList =  searchService.searchYarn("", "", "", "", "", "", "", "");
+		if (yarnList.isEmpty()) {
+			response.setError("No Yarn found ");
+			return response;
+
+		} else {
+			response.put("yarnList", yarnList);
+			return response;
+		}
+	}
 }

@@ -14,7 +14,7 @@ public class Machine {
 
     private Integer id;
     private String machineCode;
-    private Float gauge;
+    private Float machineGauge;
     
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -29,11 +29,11 @@ public class Machine {
 
     @Column(name = "MACHINE_GAUGE" , unique = false , nullable = false)
     public Float getMachineGauge(){
-    return gauge;	
+    return machineGauge;	
     }
     
     public void setMachineGauge(Float gauge){
-    this.gauge = gauge;	
+    this.machineGauge = gauge;	
     }
 
     @Column(name = "MACHINE_CODE",unique = true, nullable = false)

@@ -2,6 +2,7 @@ package com.zist.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.zist.dao.MachineDao;
@@ -43,6 +44,10 @@ public class MachineDaoImpl extends CustomHibernateDaoSupport implements Machine
 			return (Machine)list.get(0);
 		else
 			return null;
+	}
+
+	public Session retrieveSession() {
+		return getSession();
 	}
 
 }

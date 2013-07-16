@@ -14,10 +14,10 @@ import com.zist.model.Style;
 import com.zist.model.Yarn;
 import com.zist.service.DescriptionService;
 import com.zist.service.MachineService;
+import com.zist.service.SampleService;
 import com.zist.service.StyleService;
 import com.zist.service.YarnService;
 
-import com.google.gson.Gson;
 
 
 public class sampleValidation {
@@ -25,6 +25,7 @@ public class sampleValidation {
 
 	static ApplicationContext appcontext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 
+	static SampleService sampleService = (SampleService) appcontext.getBean("sampleService");
 	static StyleService styleService = (StyleService) appcontext.getBean("styleService");
 	static MachineService machineService = (MachineService) appcontext.getBean("machineService");;
 	static YarnService yarnService = (YarnService) appcontext.getBean("yarnService");;
@@ -38,7 +39,6 @@ public class sampleValidation {
 			String[] sizeDescription,String buttonStyle,String buttonSize,String[] accessories,
 			String[] color) {
 
-		Gson gson = new Gson();
 		
 		Float validatedPopularity;
 		int   validatedYear;
@@ -168,14 +168,15 @@ public class sampleValidation {
 		Description description = new Description(sizeDescription,buttonStyle,buttonSize,accessories,
 					color);
 		
-		descriptionJason = gson.toJson(description);
+		descriptionJason = sampleService.getDescriptionJason(description);
 			
 		Sample sample = new Sample();
 
 		sample.setSampleCode(sampleCode);
+		sample.setCategory(category.toUpperCase());
 		sample.setPopularity(validatedPopularity);
 		sample.setGender(gender);
-		sample.setYear(year);
+		sample.setYear(new Float(validatedYear));
 		sample.setWeight(validatedWeight);
 		sample.setPrice(validatedPrice);
 		sample.setStyle(style);

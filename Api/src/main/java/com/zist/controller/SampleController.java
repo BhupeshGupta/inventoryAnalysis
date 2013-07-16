@@ -1,5 +1,6 @@
 package com.zist.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import com.zist.model.Sample;
 import com.zist.service.SampleService;
+import com.zist.service.SearchService;
 import com.zist.utils.ResponseMap;
 import com.zist.utils.sampleValidation;
 
@@ -15,15 +17,17 @@ import com.zist.utils.sampleValidation;
 public class SampleController {
 
 	@Autowired
+	SearchService searchService;
+	@Autowired
 	SampleService sampleService;
+	
 
 	@SuppressWarnings("rawtypes")
 	public Map getSample(String sampleCode) {
 		ResponseMap response = new ResponseMap();
 		Sample sample = sampleService.findBySampleCode(sampleCode);
 		if (sample == null) {
-			response.setStatus("1");
-			response.setMessage("Sample Does not exist ");
+			response.setError("Sample Does not exist ");
 		} else {
 			response.put("sample", sample);
 		}
@@ -56,6 +60,7 @@ public class SampleController {
 			return response;
 
 		try {
+			System.out.println(sample.getDescription() + "\n");
 			sampleService.save(sample);
 		} catch (DataIntegrityViolationException e) {
 			response.setError("Sample already Exist ");
@@ -71,8 +76,7 @@ public class SampleController {
 
 		Sample sample = sampleService.findBySampleCode(sampleCode);
 		if (sample == null) {
-			response.setStatus("1");
-			response.setMessage("Sample Does not exist ");
+			response.setError("Sample Does not exist ");
 		} else {
 			response.put("sample", sample);
 		}
@@ -117,4 +121,51 @@ public class SampleController {
 		return response;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public Map searchSample(String sampleCode, String category,
+		String startPopularity, String endPopularity,
+		String equalPopularity, String startYear, String endYear,
+		String equalYear, String startWeight, String endWeight,
+		String equalWeight, String startPrice, String endPrice,
+		String equalPrice,String gender, String styleID,
+		String machineIDs, String yarns){
+		
+		ArrayList<Sample> sampleList = new ArrayList<Sample>();
+	
+        sampleList= searchService.searchSample(sampleCode,category,startPopularity,
+		       		endPopularity,equalPopularity,startYear,endYear,equalYear,
+		       		startWeight,endWeight,equalWeight,startPrice,endPrice,
+		       		equalPrice,gender,styleID,machineIDs,yarns);
+		
+		ResponseMap response = new ResponseMap();
+
+		if (sampleList.isEmpty()) {
+			response.setError("No Sample found ");
+			return response;
+
+		} else {
+			response.put("sampleList", sampleList);
+			return response;
+		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Map getAllSamples(){
+
+		ResponseMap response = new ResponseMap();
+		ArrayList<Sample> sampleList = new ArrayList<Sample>();
+		sampleList =  searchService.searchSample("", "", "", "", "", "", "",
+				"", "", "", "", "", "", "", "", "", "", "");
+		if (sampleList.isEmpty()) {
+			response.setError("No Sample found ");
+			return response;
+
+		} else {
+			response.put("sampleList", sampleList);
+			return response;
+		}
+		
+		
+	}
+	
 }

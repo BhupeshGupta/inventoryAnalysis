@@ -23,11 +23,11 @@ public class Description {
 		
 		// initializing button style
 		
-		this.buttonStyle = buttonStyle;
+		this.buttonStyle = buttonStyle.toUpperCase();
 		
 		// Initializing button size
 		
-		this.buttonSize = buttonSize;
+		this.buttonSize = buttonSize.toUpperCase();
 		
 		// Initializing accessories
 

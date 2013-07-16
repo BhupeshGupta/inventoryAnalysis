@@ -1,5 +1,7 @@
 package com.zist.dao;
 
+import org.hibernate.Session;
+
 import com.zist.model.Yarn;
 
 public interface YarnDao {
@@ -9,5 +11,5 @@ public interface YarnDao {
     void delete(Yarn yarn);
     Yarn findByYarnCode(String YarnCode);
     Yarn findByYarnId(String YarnId);
-
+    Session retrieveSession();
 }

@@ -6,17 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zist.dao.SampleDao;
+import com.zist.model.Description;
 import com.zist.model.Machine;
 import com.zist.model.Sample;
 import com.zist.model.Style;
 import com.zist.model.Yarn;
 import com.zist.service.SampleService;
 
+import com.google.gson.Gson;
+
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
     
     @Autowired
     SampleDao sampleDao;
+    
+	Gson gson = new Gson();
+
 
     public void save(Sample sample) {
 	sampleDao.save(sample);
@@ -75,15 +81,16 @@ public class SampleServiceImpl implements SampleService {
 		
 	}
 
-	public void addDescription(Sample sample, String decription) {
-		sample.setDescription(decription);
-		sampleDao.save(sample);
+	public String getDescriptionJason(Description description) {
+
+		String descriptionJason = gson.toJson(description);
+		return descriptionJason;
 	}
 
-	public void updateDescritpion(Sample sample, String description) {
-		sample.setDescription(description);
-		sampleDao.update(sample);
-		
+	public Description getDescritpion(String description) {
+
+		Description descriptionObject = gson.fromJson(description, Description.class);
+		return descriptionObject;
 	}
 
 }

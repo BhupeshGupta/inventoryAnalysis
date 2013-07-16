@@ -2,6 +2,7 @@ package com.zist.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.zist.dao.SampleDao;
@@ -44,4 +45,9 @@ public class SampleDaoImpl extends CustomHibernateDaoSupport implements SampleDa
 		return null;
     }
 
+	public Session retrieveSession() {
+		return getSession();
+	}
+
+   
 }

@@ -1,5 +1,6 @@
 package com.zist.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 
 import com.zist.model.Style;
+import com.zist.service.SearchService;
 import com.zist.service.StyleService;
 import com.zist.utils.ResponseMap;
 import com.zist.utils.styleValidation;
@@ -16,6 +18,9 @@ public class StyleController {
 
 	@Autowired
 	StyleService styleService;
+	
+	@Autowired
+	SearchService searchService;
 
 	@SuppressWarnings("rawtypes")
 	public Map getStyle(String styleCode) {
@@ -90,4 +95,38 @@ public class StyleController {
 		return response;
 	}
 
+	public ResponseMap searchStyle(String styleCode, String knitPattern){
+
+			ArrayList<Style> styleList = new ArrayList<Style>();
+	
+			styleList =  searchService.searchStyle(styleCode, knitPattern);
+		
+			ResponseMap response = new ResponseMap();
+
+			if (styleList.isEmpty()) {
+				response.setError("No Style found ");
+				return response;
+
+			} else {
+				response.put("styleList", styleList);
+				return response;
+			}
+		
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Map getAllStyles(){
+
+		ResponseMap response = new ResponseMap();
+		ArrayList<Style> styleList = new ArrayList<Style>();
+		styleList =  searchService.searchStyle("", "");
+		if (styleList.isEmpty()) {
+			response.setError("No Style found ");
+			return response;
+
+		} else {
+			response.put("styleList", styleList);
+			return response;
+		}
+	}
 }
